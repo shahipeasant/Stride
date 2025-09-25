@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "224775229543",
+    "firebase_url": "https://stride-bc91f-default-rtdb.firebaseio.com",
+    "project_id": "stride-bc91f",
+    "storage_bucket": "stride-bc91f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:224775229543:android:dde095370168ccb09784c2",
+        "android_client_info": {
+          "package_name": "com.example.stride"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvY6jrYnE8tBzXU9G65lSUAlhqRwjjLB0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
