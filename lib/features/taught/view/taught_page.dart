@@ -11,9 +11,8 @@ class TaughtPage extends ConsumerWidget {
 
   Color _getStudyColor(int studyCount) {
     if (studyCount == 0) return Colors.grey.shade300;
-    if (studyCount == 1) return Colors.lightGreen.shade200;
-    if (studyCount == 2) return Colors.green.shade400;
-    return Colors.green.shade800; // studied 3+ times
+    if (studyCount == 1) return Colors.green.shade600;
+    return Color(0xff606c38); // studied 2+ times
   }
 
   @override
@@ -34,17 +33,19 @@ class TaughtPage extends ConsumerWidget {
                 color: _getStudyColor(topic.studyCount),
                 child: ListTile(
                   title: Text(topic.topicName),
-                  subtitle: Text("${topic.courseName}\n${topic.detail}"),
-                  isThreeLine: true,
-                  trailing: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("Studied \n${topic.studyCount}x", style: const TextStyle(fontSize: 16)),
-                    ],
+                  subtitle: Text(
+                    "${topic.courseName}\n${topic.detail}\nStudied ${topic.studyCount}x",
                   ),
-                  onTap: () {
-                    ref.read(topicNotifierProvider.notifier).incrementStudy(topic);
-                  },
+                  trailing: IconButton(
+                    icon: const Icon(Icons.delete),
+                    onPressed: () {
+                      ref.read(topicNotifierProvider.notifier).deleteTopic(topic);
+                    },
+                  ),
+                  isThreeLine: true,
+                  onTap: (){
+                    ref.watch(topicNotifierProvider.notifier).incrementStudy(topic);
+                  }
                 ),
               );
             },
@@ -59,15 +60,6 @@ class TaughtPage extends ConsumerWidget {
             context: context,
             builder: (_) => const AddTopicDialog(),
           );
-          final newTopic = Topic(
-            id: '',
-            topicName: "New Topic",
-            courseName: "Course",
-            detail: "Details...",
-            taughtAt: DateTime.now(),
-            studyCount: 0,
-          );
-          await ref.read(topicNotifierProvider.notifier).addTopic(newTopic);
         },
         child: const Icon(Icons.add),
       ),

@@ -37,16 +37,18 @@ class _AddTopicDialogState extends ConsumerState<AddTopicDialog> {
             children: [
               TextFormField(
                 controller: _topicController,
-                decoration: const InputDecoration(labelText: "Topic name"),
+                decoration: const InputDecoration(hintText: "Topic name"),
                 validator: (v) => v == null || v.isEmpty ? "Required" : null,
               ),
+              const SizedBox(height: 6),
               TextFormField(
                 controller: _courseController,
-                decoration: const InputDecoration(labelText: "Course name"),
+                decoration: const InputDecoration(hintText: "Course name"),
               ),
+              const SizedBox(height: 6),
               TextFormField(
                 controller: _detailController,
-                decoration: const InputDecoration(labelText: "Details"),
+                decoration: const InputDecoration(hintText: "Details"),
                 maxLines: 2,
               ),
             ],
