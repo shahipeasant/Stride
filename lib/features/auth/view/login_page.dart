@@ -24,6 +24,12 @@ class _LoginPageState extends ConsumerState<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Image(
+                image: AssetImage('lib/assets/care.png'),
+                height: 100,
+                width: 100,
+              ),
+              const SizedBox(height: 15),
               TextField(controller: emailController, decoration: const InputDecoration(labelText: 'Email')),
               const SizedBox(height: 12),
               TextField(controller: passwordController, decoration: const InputDecoration(labelText: 'Password'), obscureText: true),

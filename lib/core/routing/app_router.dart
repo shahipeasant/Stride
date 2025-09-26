@@ -6,6 +6,7 @@ import '../../features/auth/auth_provider.dart';
 import '../../features/auth/view/login_page.dart';
 import '../../features/auth/view/signup_page.dart';
 import '../../features/home/view/home_page.dart';
+import '../../features/splash/view/splash_screen.dart';
 import '../../features/taught/view/taught_page.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -35,10 +36,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       routes: [
         GoRoute(
           path: '/',
-          redirect: (context, state) {
-            final loggedIn = authState.asData?.value != null;
-            return loggedIn ? '/home' : '/login';
-          },
+          builder: (context, state) => const SplashPage(), // just show splash
         ),
         GoRoute(
           path: '/login',
@@ -53,6 +51,5 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           builder: (context, state) => HomePage(),
         ),
       ]
-
   );
 });
