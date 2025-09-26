@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stride/features/logs/view/daily_log_view.dart';
 import 'package:stride/features/taught/view/taught_page.dart';
 import 'package:stride/features/todo/view/todo_page.dart';
 
@@ -17,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _pages = [
     TaughtPage(),
     TodoPage(),
-    const Center(child: Text("Daily log page placeholder")),
+    DailyLogPage(),
     const Center(child: Text("Events page placeholder")),
   ];
   
