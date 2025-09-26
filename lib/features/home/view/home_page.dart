@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stride/features/events/view/event_page.dart';
 import 'package:stride/features/logs/view/daily_log_view.dart';
 import 'package:stride/features/taught/view/taught_page.dart';
 import 'package:stride/features/todo/view/todo_page.dart';
@@ -19,7 +20,7 @@ class _HomePageState extends State<HomePage> {
     TaughtPage(),
     TodoPage(),
     DailyLogPage(),
-    const Center(child: Text("Events page placeholder")),
+    CalendarPage(),
   ];
   
   final List<String> _titles = [
