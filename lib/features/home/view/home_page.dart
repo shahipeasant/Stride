@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stride/features/taught/view/taught_page.dart';
+import 'package:stride/features/todo/view/todo_page.dart';
 
 import '../../auth/auth_service.dart';
 
@@ -15,7 +16,7 @@ class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
   final List<Widget> _pages = [
     TaughtPage(),
-    const Center(child: Text("Today's todo page placeholder")),
+    TodoPage(),
     const Center(child: Text("Daily log page placeholder")),
     const Center(child: Text("Events page placeholder")),
   ];
