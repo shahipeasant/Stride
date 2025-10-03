@@ -18,6 +18,30 @@ final topicsProvider = FutureProvider<List<Topic>>((ref) async {
 
 enum TopicFilter { all, studied, notStudied }
 
+final courseFilterProvider = StateProvider<String?>((ref) => null);
+// null = all courses
+
+final studyCountFilterProvider = StateProvider<int?>((ref) => null);
+// null = all study counts
+
+final filteredTopicsProvider = Provider<List<Topic>>((ref) {
+  final topicsState = ref.watch(topicNotifierProvider);
+  final courseFilter = ref.watch(courseFilterProvider);
+  final studyCountFilter = ref.watch(studyCountFilterProvider);
+
+  return topicsState.when(
+    data: (topics) {
+      return topics.where((t) {
+        final courseOk = courseFilter == null || t.courseName == courseFilter;
+        final studyOk = studyCountFilter == null || t.studyCount == studyCountFilter;
+        return courseOk && studyOk;
+      }).toList();
+    },
+    loading: () => [],
+    error: (_, __) => [],
+  );
+});
+
 /// StateNotifier for topic actions (CRUD)
 class TopicNotifier extends StateNotifier<AsyncValue<List<Topic>>> {
   final TopicRepository repo;

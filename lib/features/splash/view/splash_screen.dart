@@ -6,7 +6,8 @@ import '../../auth/auth_provider.dart';
 import 'package:riverpod/riverpod.dart';
 
 class SplashPage extends ConsumerStatefulWidget {
-  const SplashPage({super.key});
+  bool finished = false;
+  SplashPage({super.key});
 
   @override
   ConsumerState<SplashPage> createState() => _SplashPageState();
@@ -27,6 +28,13 @@ class _SplashPageState extends ConsumerState<SplashPage>
     );
     _fadeAnimation = CurvedAnimation(parent: _controller, curve: Curves.easeIn);
     _controller.forward();
+    _controller.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        setState(() {
+          widget.finished = true;
+        });
+      };
+    });
 
     Future.delayed(const Duration(seconds: 3), () {
       final loggedIn = ref.read(authStateProvider).asData?.value != null;
