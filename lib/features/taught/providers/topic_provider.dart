@@ -16,14 +16,18 @@ final topicsProvider = FutureProvider<List<Topic>>((ref) async {
   return repo.fetchTopics(FirebaseAuth.instance.currentUser!.uid);
 });
 
+///TopicFilter enum
 enum TopicFilter { all, studied, notStudied }
 
+/// StateProvider for course filter
 final courseFilterProvider = StateProvider<String?>((ref) => null);
 // null = all courses
 
+/// StateProvider for study count filter
 final studyCountFilterProvider = StateProvider<int?>((ref) => null);
 // null = all study counts
 
+/// Provider for filtered topics
 final filteredTopicsProvider = Provider<List<Topic>>((ref) {
   final topicsState = ref.watch(topicNotifierProvider);
   final courseFilter = ref.watch(courseFilterProvider);
